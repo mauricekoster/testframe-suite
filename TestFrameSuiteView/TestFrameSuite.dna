@@ -1,0 +1,292 @@
+<DnaLibrary Name="TestFrame Suite" RuntimeVersion="v4.0">
+
+  <ExternalLibrary Path="TestFrameSuiteView.dll" LoadFromBytes="true" Pack="true"/>
+  
+  <ExternalLibrary Path="ActionwordManagement.Module.dll"  LoadFromBytes="true" Pack="true" />
+  <ExternalLibrary Path="Configuration.Module.dll"  LoadFromBytes="true" Pack="true" />
+  <ExternalLibrary Path="TestDesign.Module.dll"  LoadFromBytes="true" Pack="true" />
+  <ExternalLibrary Path="TestManagement.Module.dll"  LoadFromBytes="true" Pack="true" />
+
+  <ExternalLibrary Path="ActionWord.Presenter.dll"  LoadFromBytes="true" Pack="true" />
+  <ExternalLibrary Path="Cluster.Presenter.dll"  LoadFromBytes="true" Pack="true" />
+  <ExternalLibrary Path="Configuration.Presenter.dll"  LoadFromBytes="true" Pack="true" />
+  <ExternalLibrary Path="General.Presenter.dll"  LoadFromBytes="true" Pack="true" />
+
+  <ExternalLibrary Path="ExcelApi.dll"  LoadFromBytes="true" Pack="true" />
+  <ExternalLibrary Path="NetOffice.dll" LoadFromBytes="true" Pack="true" />
+  <ExternalLibrary Path="OfficeApi.dll" LoadFromBytes="true" Pack="true" />
+  <ExternalLibrary Path="VBIDEApi.dll"  LoadFromBytes="true" Pack="true" />
+
+  <Image Name="actionword" Path="Images/actionword.png" Pack="true" />
+  <Image Name="TF_1_search_action_word" Path="Images/TF_1_search_action_word.png" Pack="true" />
+  <Image Name="TF_2_export_textfile" Path="Images/TF_2_export_textfile.png" Pack="true" />
+  <Image Name="TF_3_syntax_checker" Path="Images/TF_3_syntax_checker.png" Pack="true" />
+  <Image Name="TF_4_add_actionword_to_list" Path="Images/TF_4_add_actionword_to_list.png" Pack="true" />
+  <Image Name="TF_5_insert_actionword" Path="Images/TF_5_insert_actionword.png" Pack="true" />
+  <Image Name="TF_6_auto_testsheet_layout" Path="Images/TF_6_auto_testsheet_layout.png" Pack="true" />
+  <Image Name="TF_7_viewhide_columns" Path="Images/TF_7_viewhide_columns.png" Pack="true" />
+  <Image Name="TF_8_trim_uppercase" Path="Images/TF_8_trim_uppercase.png" Pack="true" />
+  
+  <CustomUI>
+    <!-- Inside here is the RibbonX xml passed to Excel -->
+    <!-- This can also be loaded by Excel 2007 because of the namespace -->
+
+
+    <!--RibbonX Visual Designer 1.7 for Microsoft Excel. XML Code produced on 2010-05-20-->
+    <!-- onLoad="RibbonLoaded" -->
+    
+    <customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui"
+      xmlns:nsTestFrame="TestFrame.NET"
+      loadImage='LoadImage'
+      >
+      
+    <ribbon  startFromScratch="false" >
+      <tabs >
+        <tab idQ="nsTestFrame:idTFtab" insertBeforeMso="TabInsert" label="TestFrame Suite" visible="true">
+          <group idQ="nsTestFrame:idActionwordManagement" label="Actionword management">
+            <button
+              id="Button23"
+              image="actionword"
+              label="Manage actionwords"
+              showImage="true"
+              showLabel="true"
+              size="large"
+              visible="true"
+              onAction="RunTagMacro"
+              tag="tftManageActionwords"/>
+            
+          </group >
+          
+          
+          <group idQ="nsTestFrame:idTestDesign" visible="true" label="Test design">
+            <button
+              id="Button22"
+              image="TF_5_insert_actionword"
+              label="Insert actionword from list"
+              showImage="true"
+              showLabel="true"
+              size="large"
+              onAction="RunTagMacro"
+              tag="tftSelectActionWord"/>
+         
+            <button
+              id="Button42"
+              imageMso="HappyFace"
+              label="Testcondition"
+              showImage="true"
+              showLabel="true"
+              size="normal"
+              visible="true"
+              onAction="RunTagMacro" 
+              tag="tftInsertNewTestCondition"/>
+            
+            <button
+              id="Button43"
+              imageMso="HappyFace"
+              label="Testcase"
+              showImage="true"
+              showLabel="true"
+              size="normal"
+              visible="true"
+              onAction="RunTagMacro" 
+              tag="tftInsertNewTestCase"/>
+            
+            <button
+              id="Button44"
+              imageMso="HappyFace"
+              label="Tag"
+              showImage="true"
+              showLabel="true"
+              size="normal"
+              visible="true"
+              onAction="RunTagMacro"
+              tag="tftInsertNewTag"/>
+            
+          </group >
+
+          <group idQ="nsTestFrame:idTestManagement" visible="true" label="Test management">
+            <dynamicMenu
+              id="DynamicMenu_Clusters"
+              imageMso="UpgradeWorkbook"
+              label="Create new cluster workbook"
+              showImage="true"
+              showLabel="true"
+              size="large"
+              visible="true"
+              getContent="getContent_Clusters"/>
+            <button
+              id="Button50"
+              imageMso="HappyFace"
+              label="Manage categories"
+              showImage="true"
+              showLabel="true"
+              size="normal"
+              visible="true"
+              onAction="RunTagMacro"
+              tag="tftShowManageCategories"/>
+            
+          </group>
+          
+          <group idQ="nsTestFrame:idConfiguration" label="Configuration">
+              
+              <button
+                id="Button511"
+                imageMso="PropertySheet"
+                label="General"
+                showImage="true"
+                showLabel="true"
+                visible="true"
+                size="normal"
+                onAction="RunTagMacro"
+                tag="tftShowGeneralOptions"/>
+              
+              <button
+                id="Button515"
+                imageMso="DatabaseCopyDatabaseFile"
+                label="Database Manager"
+                showImage="true"
+                showLabel="true"
+                size="normal"
+                visible="true"
+                onAction="RunTagMacro"
+                tag="tftShowDatabaseManager"/>
+            
+          </group>
+
+          <group
+            idQ="nsTestFrame:idHelp"
+            visible="true"
+            label="Help and information">
+            
+            <splitButton
+              id="Splitbutton1"
+              showLabel="true"
+              size="normal"
+              visible="true">
+              <menu
+                id="Menu2"
+                itemSize="normal"
+                label="Help">
+                
+                <button
+                  id="Button532"
+                  imageMso="Help"
+                  label="Help"
+                  showImage="true"
+                  showLabel="true"
+                  visible="true"
+                  onAction="RunTagMacro" 
+                  tag="tftShowHelp"/>
+                
+                <button
+                  id="Button531"
+                  imageMso="TipWizardHelp"
+                  label="What&apos;s new"
+                  showImage="true"
+                  showLabel="true"
+                  visible="true"
+                  onAction="RunTagMacro" 
+                  tag="tftWhatsNew"/>
+                
+              </menu >
+            </splitButton >
+            
+            <button
+              id="Button54"
+              imageMso="DocumentPanelTemplate"
+              label="About"
+              size="large"
+              visible="true"
+              onAction="RunTagMacro" 
+              tag="tftShowInfo"/>
+            
+          </group >
+          
+        </tab >
+      </tabs >
+    </ribbon >
+  </customUI >
+  </CustomUI>
+
+  <CustomUI>
+    <!-- CommandBars Fallback for Excel version pre-2007, interpreted 
+by ExcelDna (I just made up the namespace for future versioning) -->
+    <commandBars xmlns='http://schemas.excel-dna.net/office/2003/01/commandbars' >
+      <commandBar name='Worksheet Menu Bar'>
+        <!-- Here we add a top-level menu to the main Excel Worksheet menu -->
+        <popup caption='TestFrame Suite' height='19'  >
+          <popup caption='Options' >
+        <!--
+            
+            <button caption='Addin manager' onAction='ShowAddins' visible='false'/>
+            <button caption='Style management' onAction='ShowStyleManagement' visible='false'/>
+            <button caption='Manage Reserved Words' onAction='ShowReservedWords' visible='false'/>
+      -->
+            <button caption='General options' onAction='tftShowGeneralOptions'/>
+            <button caption='Database manager' onAction='tftShowDatabaseManager'/>
+            <!-- <button caption='Expert settings' onAction='ShowSettings' beginGroup='true'  visible='false'/> -->
+          </popup>
+
+          <button caption='Manage actionwords' onAction='tftManageActionwords' beginGroup='true' image='actionword' />
+          <popup caption='Insert' >
+            <button caption='Insert test condition' onAction='tftInsertNewTestCondition'/>
+            <button caption='Insert test case' onAction='tftInsertNewTestCase'/>
+            <button caption='Insert tag' onAction='tftInsertNewTag'/>
+            <popup caption='Cluster' >
+            </popup>
+            
+          </popup>
+          <!--
+                
+        CreateMenuItem wb, mnu$, "&Insert", "![&ClusterList]", "MenuInsertCluster"
+        CreateMenuItem wb, mnu$, "&Insert", "![&SheetList]", "MenuInsertSheet"
+-->
+
+          <popup caption='Help'  beginGroup='true' >
+            <button caption='Help' onAction='tftShowHelp'/>
+            <button caption="What's new"  onAction='tftWhatsNew'/>
+            
+          </popup>
+          <button caption='About...' onAction='tftShowInfo'/>
+          
+        </popup>
+
+        
+        <!--
+         <button caption='Say Hello' onAction='ShowHelloMessage' image='M' beginGroup='true'></button>
+          <button caption='Another Item...' enabled='false' tooltipText='In the tooltip?' />
+          <popup caption='My sub-menu' >
+            <button helpFile='xyz.hlp' faceId='123' helpContextId='134' caption='SubMenu Button' onAction='ShowHelloMessage'/>
+          </popup>
+        -->
+       
+
+
+
+
+      </commandBar>
+
+      <commandBar name='TestFrame Suite'>
+      <!--
+        <button image="TF_1_search_action_word" tooltipText="Search actionswords" onAction="SeekFind" beginGroup='true'/>
+        <button image="TF_2_export_textfile" tooltipText="Export textfile" onAction="ExportText" />
+
+        <button image="TF_3_syntax_checker" tooltipText="Syntax Checker" onAction="PerformSyntaxCheck" beginGroup='true'/>
+        <button image="TF_4_add_actionword_to_list" tooltipText="Add Actionword to list" onAction="tftDoAddActionwordToList" />
+    -->
+        
+        <button image="TF_5_insert_actionword" tooltipText="Select actionword from list" onAction="tftSelectActionWord" />
+    <!--
+        <button image="TF_6_auto_testsheet_layout" tooltipText="Auto TestSheet Layout" onAction="LayoutDialog" beginGroup='true'/>
+        <button image="TF_7_viewhide_columns" tooltipText="View / Hide Column Titles" onAction="ModifyColumntitles" />
+
+        <button image="TF_8_trim_uppercase" tooltipText="Trim / Uppercase" onAction="ModifyValues" beginGroup='true'/>
+    -->
+      </commandBar>
+      
+     
+      
+    </commandBars>
+  </CustomUI>
+
+</DnaLibrary>

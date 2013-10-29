@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8E1D5F15-87F6-4C79-A993-3244D67896A6}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestFrameSuiteView</RootNamespace>
+    <AssemblyName>TestFrameSuiteView</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\TF.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ExcelApi">
+      <HintPath>..\Libraries\NetOffice\ExcelApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ExcelDna.Integration">
+      <HintPath>..\packages\Excel-DNA.0.30.3\lib\ExcelDna.Integration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="NetOffice">
+      <HintPath>..\Libraries\NetOffice\NetOffice.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="OfficeApi">
+      <HintPath>..\Libraries\NetOffice\OfficeApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="VBIDEApi">
+      <HintPath>..\Libraries\NetOffice\VBIDEApi.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestFrameRibbon.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Content Include="Images\actionword.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\cgi-logo.png" />
+    <Resource Include="Images\homepage-banner-1.jpg" />
+    <Content Include="Images\TF_1_search_action_word.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\TF_2_export_textfile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\TF_3_syntax_checker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\TF_4_add_actionword_to_list.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\TF_5_insert_actionword.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\TF_6_auto_testsheet_layout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\TF_7_viewhide_columns.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\TF_8_trim_uppercase.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\TF.ico" />
+    <Resource Include="README.txt" />
+    <Content Include="TestFrameSuite.dna">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ActionwordManagement.Module\ActionwordManagement.Module.csproj">
+      <Project>{1945675B-1D5D-4D8C-BB29-690A0B7FE8D4}</Project>
+      <Name>ActionwordManagement.Module</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ActionWord.Presenter\ActionWord.Presenter.csproj">
+      <Project>{CB9B162D-D611-4F9C-809B-DCF4ACEF3F6F}</Project>
+      <Name>ActionWord.Presenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cluster.Presenter\Cluster.Presenter.csproj">
+      <Project>{1435CC25-E0C3-414E-BF63-38855AE089BD}</Project>
+      <Name>Cluster.Presenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Configuration.Module\Configuration.Module.csproj">
+      <Project>{5D3D0E62-7F29-41AB-95AB-D517683B12CA}</Project>
+      <Name>Configuration.Module</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\General.Presenter\General.Presenter.csproj">
+      <Project>{0A692502-0C1A-49F8-959B-066A2CF110F9}</Project>
+      <Name>General.Presenter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestDesign.Module\TestDesign.Module.csproj">
+      <Project>{C4F5CC5F-F7A7-4C5E-A83C-0925275495CA}</Project>
+      <Name>TestDesign.Module</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestManagement.Module\TestManagement.Module.csproj">
+      <Project>{952CF00A-C470-4326-9810-7A63EC553E99}</Project>
+      <Name>TestManagement.Module</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo B | xcopy "$(SolutionDir)packages\Excel-DNA.0.30.3\tools\ExcelDna.xll" "$(TargetDir)TestFrameSuite.xll" /C /Y
+echo B | xcopy "$(SolutionDir)packages\Excel-DNA.0.30.3\tools\ExcelDna64.xll" "$(TargetDir)TestFrameSuite.x64.xll" /C /Y
+echo B | xcopy "$(ProjectDir)TestFrameSuite.dna" "$(TargetDir)TestFrameSuite.dna" /C /Y
+echo B | xcopy "$(ProjectDir)TestFrameSuite.dna" "$(TargetDir)TestFrameSuite.x64.dna" /C /Y
+"$(SolutionDir)packages\Excel-DNA.0.30.3\tools\ExcelDnaPack.exe" "$(TargetDir)TestFrameSuite.dna" /Y
+"$(SolutionDir)packages\Excel-DNA.0.30.3\tools\ExcelDnaPack.exe" "$(TargetDir)TestFrameSuite.x64.dna" /Y</PostBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties BuildVersion_UseGlobalSettings="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
