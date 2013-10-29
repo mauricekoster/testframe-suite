@@ -1,0 +1,143 @@
+﻿<Window x:Class="ActionwordManagement.Module.ManageActionwords"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Manage actionwords" Height="800" Width="1200">
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="600*" />
+            <RowDefinition Height="200" />
+            
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="310*" />
+            <ColumnDefinition Width="450*" />
+            <ColumnDefinition Width="320*" />
+            <ColumnDefinition Width="150" />
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Grid.ColumnSpan="4" Margin="0" Padding="10" Name="textBlock1"
+                   Text="Manage the actionwords. Select the actionword in the tree. edit actionword in the middle part. Arguments are edited on right side."
+                   FontFamily="Verdana" FontWeight="SemiBold" Background="White" />
+
+        <TreeView  Margin="10" Name="tvElements" Grid.Row="1" SelectedItemChanged="tvElements_SelectedItemChanged" />
+        <StackPanel Name="stackPanelElement" Grid.Column="0" Grid.Row="2">
+            <StackPanel Name="stackPanelElementButtons1" Margin="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Add root" Margin="5" Height="25" Width="65" Name="btnAddRootElement" Click="btnAddRootElement_Click" />
+                <Button Content="Add subelement" Margin="5" Height="25" Width="100" Name="btnAddElement" Click="btnAddElement_Click" />
+                <Button Content="Add actionword" Margin="5" Height="25" Width="100" Name="btnAddActionword" Click="btnAddActionword_Click" />
+            </StackPanel>
+            <StackPanel Name="stackPanelElementButtons2" Margin="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Edit" Margin="5" Height="25" Width="65" Name="btnEditElement" Click="btnEditElement_Click" />
+                <Button Content="Remove" Margin="5" Height="25" Width="65" Name="btnRemoveElement" Click="btnRemoveElement_Click" />
+            </StackPanel>
+            
+            <TextBlock Margin="10" Text="Element details:" FontWeight="DemiBold" />
+            <Grid Margin="10" Name="ElementEditor" IsEnabled="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*" />
+                    <ColumnDefinition Width="200*" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <Label Height="23" Margin="2" Content="Name:" />
+                    <Label Height="23" Margin="2" Content="Fullname:" />
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBox Height="23" Name="txtElementName" Margin="2" Text="{Binding Name}"/>
+                    <TextBox Height="23" Name="txtElementFullname" Margin="2" Text="{Binding Fullname}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="10" Name="stackPanelActionword" >
+            <TextBlock Margin="10" Text="Actionword details:" FontWeight="DemiBold" />
+
+            <StackPanel Margin="10" Name="ActionwordDetails"  IsEnabled="False" >
+
+                <StackPanel Orientation="Horizontal" Margin="0,3,0,3">
+                    <Label Width="80" Content="Name:" />
+                    <TextBox Height="23" Name="txtActionwordName" Width="300" Text="{Binding Name}"/>
+                    
+                </StackPanel>
+                
+                
+            </StackPanel>
+            <Expander Header="Description and actions" IsExpanded="True">
+                <StackPanel Margin="10" Name="ActionwordDescription"  IsEnabled="False" >
+                    <StackPanel Orientation="Horizontal" Margin="0,3,0,3">
+                        <Label  Width="80" Content="Description:" />
+                        <TextBox Height="80" Name="txtActionwordDescription" Width="300" TextWrapping="Wrap" Text="{Binding Description}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,3,0,3">
+                        <Label  Width="80" Content="Action:" />
+                        <TextBox Height="80" Name="txtActionwordAction" Width="300" TextWrapping="Wrap" Text="{Binding Actions}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Expander>
+
+            <Expander Header="Screens">
+                <StackPanel Margin="10" Name="ActionwordScreens"  IsEnabled="False" >
+                    <StackPanel Orientation="Horizontal" Margin="0,3,0,3">
+                        <Label  Width="80" Content="Precondition:" />
+                        <TextBox Height="80" Name="txtActionwordPrecondition" Width="300" TextWrapping="Wrap" Text="{Binding PreCondition}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,3,0,3">
+                        <Label  Width="80" Content="Start screen:" />
+                        <ComboBox Height="23" Name="cmbActionwordStartScreen" Width="300" SelectionChanged="cmbActionwordStartScreen_SelectionChanged" />
+                        
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="0,3,0,3">
+                        <Label  Width="80" Content="Postcondition:" />
+                        <TextBox Height="80" Name="txtActionwordPostcondition" Width="300" TextWrapping="Wrap" Text="{Binding PostCondition}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,3,0,3">
+                        <Label  Width="80" Content="Start screen:" />
+                        <TextBox Height="23" Name="txtActionwordEndScreen" Width="300" TextWrapping="Wrap" Text="{Binding EndScreen}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Expander>
+
+            <Expander Header="Analyst / Navigator">
+                <TextBlock Text="NYI" />
+            </Expander>
+            
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="10" Name="stackPanelArgument" >
+            <TextBlock Margin="10" Text="Arguments:" FontWeight="DemiBold" />
+            <ListBox Name="lstArguments" Height="120" Margin="10" SelectionChanged="lstArguments_SelectionChanged" />
+            
+            <StackPanel Name="stackPanelArgumentButtons" Margin="0" Orientation="Horizontal" HorizontalAlignment="Center" IsEnabled="False">
+                <Button Content="New" Margin="3" Height="25" Width="60" Name="btnNewArgument" Click="btnNewArgument_Click" />
+                <Button Content="Remove" Margin="3" Height="25" Width="62" Name="btnRemoveArgument"  />
+                <Button Content="Move up" Margin="3" Height="25" Width="65" Name="btnMoveUp"  />
+                <Button Content="Move down" Margin="3" Height="25" Width="70" Name="btnMoveDown"  />
+            </StackPanel>
+            <StackPanel Margin="10" Name="ArgumentDetails"  IsEnabled="False" >
+
+                <StackPanel Orientation="Horizontal" Margin="0,3,0,3">
+                    <Label  Width="90" Content="Name:" />
+                    <TextBox Height="23" Width="170" TextWrapping="Wrap" Text="{Binding Name}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,3,0,3">
+                    <Label  Width="90" Content="Description:" />
+                    <TextBox Height="80" Width="170" TextWrapping="Wrap"  Text="{Binding Description}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,3,0,3">
+                    <Label  Width="90" Content="Default value:" />
+                    <TextBox Height="23" Width="170" TextWrapping="Wrap"  Text="{Binding DefaultValue}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,3,0,3">
+                    <CheckBox Content="Required" IsChecked="{Binding Required}" />
+                </StackPanel>
+                <Button Content="Edit validation..." IsEnabled="False" Width="80" />
+            </StackPanel>
+        </StackPanel>
+        
+        <StackPanel Name="stackPanel1" Grid.Column="3" Grid.Row="1" Grid.RowSpan="2">
+            <Button Content="Close" Margin="10" Name="btnClose" Click="btnClose_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

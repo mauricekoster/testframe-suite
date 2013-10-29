@@ -1,0 +1,90 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFrameSuiteView", "TestFrameSuiteView\TestFrameSuiteView.csproj", "{8E1D5F15-87F6-4C79-A993-3244D67896A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{65DCBA81-67C7-49FA-B6BD-670E132FD0A3}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		TestFrameToolbar.NET.vsmdi = TestFrameToolbar.NET.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionWord.Presenter", "ActionWord.Presenter\ActionWord.Presenter.csproj", "{CB9B162D-D611-4F9C-809B-DCF4ACEF3F6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cluster.Presenter", "Cluster.Presenter\Cluster.Presenter.csproj", "{1435CC25-E0C3-414E-BF63-38855AE089BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "General.Presenter", "General.Presenter\General.Presenter.csproj", "{0A692502-0C1A-49F8-959B-066A2CF110F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionwordManagement.Module", "ActionwordManagement.Module\ActionwordManagement.Module.csproj", "{1945675B-1D5D-4D8C-BB29-690A0B7FE8D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDesign.Module", "TestDesign.Module\TestDesign.Module.csproj", "{C4F5CC5F-F7A7-4C5E-A83C-0925275495CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration.Module", "Configuration.Module\Configuration.Module.csproj", "{5D3D0E62-7F29-41AB-95AB-D517683B12CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actionword.Presenter.Tests", "Actionword.Presenter.Tests\Actionword.Presenter.Tests.csproj", "{D89FF38B-62C9-4CF7-848B-E18E3DB4C7C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestManagement.Module", "TestManagement.Module\TestManagement.Module.csproj", "{952CF00A-C470-4326-9810-7A63EC553E99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration.Presenter", "Configuration.Presenter\Configuration.Presenter.csproj", "{60812D58-9842-4BD1-9EDF-BCEA005EC5C1}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = TestFrameToolbar.NET.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E1D5F15-87F6-4C79-A993-3244D67896A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E1D5F15-87F6-4C79-A993-3244D67896A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E1D5F15-87F6-4C79-A993-3244D67896A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E1D5F15-87F6-4C79-A993-3244D67896A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB9B162D-D611-4F9C-809B-DCF4ACEF3F6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB9B162D-D611-4F9C-809B-DCF4ACEF3F6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB9B162D-D611-4F9C-809B-DCF4ACEF3F6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB9B162D-D611-4F9C-809B-DCF4ACEF3F6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1435CC25-E0C3-414E-BF63-38855AE089BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1435CC25-E0C3-414E-BF63-38855AE089BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1435CC25-E0C3-414E-BF63-38855AE089BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1435CC25-E0C3-414E-BF63-38855AE089BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A692502-0C1A-49F8-959B-066A2CF110F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A692502-0C1A-49F8-959B-066A2CF110F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A692502-0C1A-49F8-959B-066A2CF110F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A692502-0C1A-49F8-959B-066A2CF110F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1945675B-1D5D-4D8C-BB29-690A0B7FE8D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1945675B-1D5D-4D8C-BB29-690A0B7FE8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1945675B-1D5D-4D8C-BB29-690A0B7FE8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1945675B-1D5D-4D8C-BB29-690A0B7FE8D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4F5CC5F-F7A7-4C5E-A83C-0925275495CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4F5CC5F-F7A7-4C5E-A83C-0925275495CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4F5CC5F-F7A7-4C5E-A83C-0925275495CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4F5CC5F-F7A7-4C5E-A83C-0925275495CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D3D0E62-7F29-41AB-95AB-D517683B12CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D3D0E62-7F29-41AB-95AB-D517683B12CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D3D0E62-7F29-41AB-95AB-D517683B12CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D3D0E62-7F29-41AB-95AB-D517683B12CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D89FF38B-62C9-4CF7-848B-E18E3DB4C7C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D89FF38B-62C9-4CF7-848B-E18E3DB4C7C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D89FF38B-62C9-4CF7-848B-E18E3DB4C7C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D89FF38B-62C9-4CF7-848B-E18E3DB4C7C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{952CF00A-C470-4326-9810-7A63EC553E99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{952CF00A-C470-4326-9810-7A63EC553E99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{952CF00A-C470-4326-9810-7A63EC553E99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{952CF00A-C470-4326-9810-7A63EC553E99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60812D58-9842-4BD1-9EDF-BCEA005EC5C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60812D58-9842-4BD1-9EDF-BCEA005EC5C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60812D58-9842-4BD1-9EDF-BCEA005EC5C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60812D58-9842-4BD1-9EDF-BCEA005EC5C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		BuildVersion_BuildVersioningStyle = None.None.None.None
+		BuildVersion_UpdateAssemblyVersion = False
+		BuildVersion_UseGlobalSettings = True
+		BuildVersion_UpdateFileVersion = False
+	EndGlobalSection
+EndGlobal

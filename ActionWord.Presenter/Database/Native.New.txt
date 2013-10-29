@@ -1,0 +1,258 @@
+﻿-- TestFrame Toolbar database scheme version 2009.07
+-- SQL syntax is same as SQL Server syntax, but works fine for MS Access Jet
+
+-- ---------------------------------------------------------------------------------
+-- Create tables
+-- ---------------------------------------------------------------------------------
+
+-- Action word
+
+CREATE TABLE [actionword] 
+(
+	[actionword_id] int identity (1, 1) NOT NULL PRIMARY KEY,
+	[actionword] nvarchar(255) NOT NULL,
+	[element] int NULL,
+	[description] ntext NULL,
+	[start_screen] int NULL,
+	[precondition] ntext NULL,
+	[end_screen] int NULL,
+	[postcondition] ntext NULL,
+	[actions] ntext NULL,
+	[analyst] int NULL,
+	[status_analysis] int NULL,
+	[analysis_last_modified] nvarchar(10) NULL,
+	[navigator] int NULL,
+	[status_navigation] int NULL,
+	[navigation_last_modified] nvarchar(10) NULL,
+	[last_modified] nvarchar(20) NULL,
+	[modified_by] nvarchar(50) NULL,
+	[locked_by] nvarchar(50) NULL 
+);
+
+-- Argument
+
+CREATE TABLE [argument] 
+(
+	[argument_id] int identity (1, 1) NOT NULL PRIMARY KEY,
+	[actionword_id] int NULL,
+	[argument_number] int NULL,
+	[name] nvarchar(50) NULL,
+	[description] nvarchar(255) NULL,
+	[default_value] nvarchar(100) NULL,
+	[required] bit NULL DEFAULT 0,
+	[validation_id] int NULL DEFAULT 0 
+);
+
+
+-- Element
+
+CREATE TABLE [element] 
+(
+	[element_id] int identity (1, 1) NOT NULL PRIMARY KEY,
+	[element_name] nvarchar(50) NULL,
+	[element_fullname] nvarchar(50) NULL,
+	[parent] int NOT NULL 
+);
+
+-- Person
+
+CREATE TABLE [person] 
+(
+	[person_id] int identity (1, 1) NOT NULL PRIMARY KEY,
+	[person_name] nvarchar(50) NULL,
+	[office_username] nvarchar(50) NULL,
+	[usergroup] int NOT NULL,
+	[user_id] nvarchar(50) NULL,
+	[password] nvarchar(50) NULL,
+	[analyst] bit NOT NULL,
+	[navigator] bit NOT NULL,
+	[last_element] int NULL DEFAULT 0,
+	[last_actionword] int NULL DEFAULT 0 
+);
+
+-- Screen
+
+CREATE TABLE [screen] 
+(
+	[screen_id] int identity (1, 1) NOT NULL PRIMARY KEY,
+	[screenname] nvarchar(255) NULL,
+	[screenname full] nvarchar(255) NULL,
+	[element] int NULL 
+);
+
+
+-- Setting
+
+CREATE TABLE [setting]
+(
+	[setting] nvarchar(50) NOT NULL PRIMARY KEY,
+	[value] ntext NULL,
+	[protected] bit NOT NULL DEFAULT 0,
+	[value_protected] bit NOT NULL DEFAULT 0,
+	[section] nvarchar(20) NOT NULL DEFAULT 'General'
+);
+
+-- Status
+
+CREATE TABLE [status]
+(
+	[status_id] int identity (1, 1) NOT NULL PRIMARY KEY,
+	[status] nvarchar(50) NULL,
+	[cluster] bit NOT NULL,
+	[condition] bit NOT NULL,
+	[actionword] bit NOT NULL 
+);
+
+-- Style
+
+CREATE TABLE [style]
+(
+	[stylename] nvarchar(15) NOT NULL PRIMARY KEY, 
+	[styledata] ntext
+);
+
+-- Usergroup
+
+CREATE TABLE [usergroup]
+(
+	[usergroup_id] int identity (1, 1) NOT NULL PRIMARY KEY,
+	[usergroup_name] nvarchar(50) NULL,
+	[read] bit NOT NULL,
+	[add] bit NOT NULL,
+	[modify] bit NOT NULL,
+	[delete] bit NOT NULL,
+	[password] nvarchar(50) NULL,
+	[protected] bit NOT NULL,
+	[lock] BIT NOT NULL DEFAULT 0
+);
+
+-- Validation
+
+CREATE TABLE [validation]
+(
+	[validation_id] int identity (1, 1) NOT NULL PRIMARY KEY,
+	[type] int NULL,
+	[operator] int NULL,
+	[formula1] ntext NULL,
+	[formula2] ntext NULL,
+	[ignore_blank] bit NOT NULL,
+	[dropdown] bit NOT NULL,
+	[input_show] bit NOT NULL,
+	[input_title] nvarchar(50) NULL,
+	[input_message] nvarchar(255) NULL,
+	[error_show] bit NOT NULL,
+	[error_style] int NULL,
+	[error_title] nvarchar(50) NULL,
+	[error_message] nvarchar(255) NULL,
+	[Std_validation] bit NOT NULL,
+	[default] bit NOT NULL
+);
+
+-- ---------------------------------------------------------------------------------
+-- INSERT values
+-- ---------------------------------------------------------------------------------
+
+-- -------------------
+-- Element
+-- -------------------
+
+INSERT INTO element (element_name, parent) VALUES 
+('General', 0);
+
+-- -------------------
+-- Setting
+-- -------------------
+
+INSERT INTO setting ([setting], [value], [protected], [value_protected], [section]) VALUES 
+('database version', '2009.07', 1, 1, 'General');
+
+INSERT INTO setting ([setting], [value], [protected], [section]) VALUES 
+('&cont', '&Cont;&cont', 1, 'General');
+
+INSERT INTO setting ([setting], [value], [protected], [section]) VALUES 
+('&keep', '&Keep;&keep;&Bewaar;&bewaar', 1, 'General');
+
+INSERT INTO setting ([setting], [value], [protected], [section]) VALUES 
+('allow uppercase in actionword', 'no', 1, 'General');
+
+INSERT INTO setting ([setting], [value], [protected], [section]) VALUES 
+('arguments per row', '7', 1, 'General');
+
+INSERT INTO setting ([setting], [value], [protected], [section]) VALUES 
+('header', 'auteur;author;blad;cluster;date;datum;document;sheet;versie;version;geautoriseerd door;aantal testgevallen;aantal testcondities;authorised by;number of testconditions;number of testcases', 1, 'General');
+			
+INSERT INTO setting ([setting], [value], [protected], [section]) VALUES 
+('scenario', 'scenario', 1, 'General');
+
+INSERT INTO setting ([setting], [value], [protected], [section]) VALUES 
+('section', 'section;sectie', 1, 'General');
+
+INSERT INTO setting ([setting], [value], [protected], [section]) VALUES 
+('template directory', '', 1, 'General');
+
+INSERT INTO setting ([setting], [value], [protected], [section]) VALUES 
+('test case', 'test case;testgeval;testcase;test geval', 1, 'General');
+
+INSERT INTO setting ([setting], [value], [protected], [section]) VALUES 
+('test condition', 'test condition;testconditie;testcondition;test conditie', 1, 'General');
+
+INSERT INTO setting ([setting], [value], [protected], [section]) VALUES 
+('phase testing', 'False', 1, 'Fase testing');
+
+INSERT INTO setting ([setting], [value], [protected], [section]) VALUES 
+('phase default', 'A', 1, 'Fase testing');
+
+-- -------------------
+-- Status
+-- -------------------
+
+INSERT INTO status ([status], [cluster], [condition], [actionword]) VALUES 
+('Initial', 1, 1, 1);
+
+INSERT INTO status ([status], [cluster], [condition], [actionword]) VALUES 
+('Draft', 1, 1, 1);
+
+INSERT INTO status ([status], [cluster], [condition], [actionword]) VALUES 
+('Ready for review', 1, 1, 1);
+
+INSERT INTO status ([status], [cluster], [condition], [actionword]) VALUES 
+('Tested', 1, 1, 0);
+
+INSERT INTO status ([status], [cluster], [condition], [actionword]) VALUES 
+('Final', 1, 1, 1);
+
+-- -------------------
+-- Usergroup
+-- -------------------
+
+INSERT INTO usergroup ([usergroup_name], [read], [add], [modify], [delete], [password], [protected], [lock]) VALUES 
+('Administrator', 1, 1, 1, 1, 'root', 1, 1);
+
+INSERT INTO usergroup ([usergroup_name], [read], [add], [modify], [delete], [password], [protected]) VALUES 
+('Analist', 1, 1, 1, 0, '', 1);
+
+INSERT INTO usergroup ([usergroup_name], [read], [add], [modify], [delete], [password], [protected]) VALUES 
+('Navigator', 1, 1, 0, 0, '', 1);
+
+-- -------------------
+-- Style
+-- -------------------
+
+INSERT INTO style ([stylename],[styledata]) 
+VALUES ('actionword','{name:actionword;IncludeAlignment:True;Alignment:{AddIndent:False;HorizontalAlignment:-4131;VerticalAlignment:-4160;WrapText:False;Orientation:-4128;IndentLevel:0;ReadingOrder:-5002;ShrinkToFit:False};IncludeFont:True;Font:{Background:;Bold:True;Color:0;ColorIndex:-4105;Italic:False;Name:Arial;Size:10;OutlineFont:False;Shadow:False;Strikethrough:False;Subscript:False;Superscript:False;Underline:-4142};IncludePatterns:True;Interior:{Color:12632256;ColorIndex:15;Pattern:1;PatternColor:0;PatternColorIndex:-4105};IncludeNumber:False;Number:{NumberFormat:General};IncludeProtection:True;Protection:{FormulaHidden:False;Locked:True};IncludeBorder:True;Borders:{dummy:1;xlEdgeLeft:{Side:xlEdgeLeft;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeRight:{Side:xlEdgeRight;Color:0;ColorIndex:-4105;LineStyle:1;Weight:2};xlEdgeTop:{Side:xlEdgeTop;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeBottom:{Side:xlEdgeBottom;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlDiagonalDown:{Side:xlDiagonalDown;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlDiagonalUp:{Side:xlDiagonalUp;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2}}}');
+INSERT INTO style ([stylename],[styledata]) 
+VALUES ('argument','{name:argument;IncludeAlignment:True;Alignment:{AddIndent:False;HorizontalAlignment:-4131;VerticalAlignment:-4160;WrapText:False;Orientation:-4128;IndentLevel:0;ReadingOrder:-5002;ShrinkToFit:False};IncludeFont:True;Font:{Background:;Bold:False;Color:0;ColorIndex:-4105;Italic:False;Name:Arial;Size:10;OutlineFont:False;Shadow:False;Strikethrough:False;Subscript:False;Superscript:False;Underline:-4142};IncludePatterns:True;Interior:{Color:16777215;ColorIndex:-4142;Pattern:-4142;PatternColor:0;PatternColorIndex:-4142};IncludeNumber:False;Number:{NumberFormat:General};IncludeProtection:True;Protection:{FormulaHidden:False;Locked:False};IncludeBorder:True;Borders:{dummy:1;xlEdgeLeft:{Side:xlEdgeLeft;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeRight:{Side:xlEdgeRight;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeTop:{Side:xlEdgeTop;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeBottom:{Side:xlEdgeBottom;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlDiagonalDown:{Side:xlDiagonalDown;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlDiagonalUp:{Side:xlDiagonalUp;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2}}}');
+INSERT INTO style ([stylename],[styledata]) 
+VALUES ('comment','{name:comment;IncludeAlignment:True;Alignment:{AddIndent:False;HorizontalAlignment:-4131;VerticalAlignment:-4160;WrapText:False;Orientation:-4128;IndentLevel:0;ReadingOrder:-5002;ShrinkToFit:False};IncludeFont:True;Font:{Background:;Bold:True;Color:6723891;ColorIndex:50;Italic:True;Name:Arial;Size:10;OutlineFont:False;Shadow:False;Strikethrough:False;Subscript:False;Superscript:False;Underline:-4142};IncludePatterns:True;Interior:{Color:16777215;ColorIndex:-4142;Pattern:-4142;PatternColor:0;PatternColorIndex:-4142};IncludeNumber:False;Number:{NumberFormat:General};IncludeProtection:True;Protection:{FormulaHidden:False;Locked:True};IncludeBorder:True;Borders:{dummy:1;xlEdgeLeft:{Side:xlEdgeLeft;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeRight:{Side:xlEdgeRight;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeTop:{Side:xlEdgeTop;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeBottom:{Side:xlEdgeBottom;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlDiagonalDown:{Side:xlDiagonalDown;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlDiagonalUp:{Side:xlDiagonalUp;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2}}}');
+INSERT INTO style ([stylename],[styledata]) 
+VALUES ('information','{name:information;IncludeAlignment:True;Alignment:{AddIndent:False;HorizontalAlignment:-4131;VerticalAlignment:-4160;WrapText:False;Orientation:-4128;IndentLevel:0;ReadingOrder:-5002;ShrinkToFit:False};IncludeFont:True;Font:{Background:;Bold:True;Color:0;ColorIndex:1;Italic:False;Name:Arial;Size:10;OutlineFont:False;Shadow:False;Strikethrough:False;Subscript:False;Superscript:False;Underline:-4142};IncludePatterns:True;Interior:{Color:52479;ColorIndex:44;Pattern:1;PatternColor:0;PatternColorIndex:-4105};IncludeNumber:False;Number:{NumberFormat:General};IncludeProtection:True;Protection:{FormulaHidden:False;Locked:True};IncludeBorder:True;Borders:{dummy:1;xlEdgeLeft:{Side:xlEdgeLeft;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeRight:{Side:xlEdgeRight;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeTop:{Side:xlEdgeTop;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeBottom:{Side:xlEdgeBottom;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlDiagonalDown:{Side:xlDiagonalDown;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlDiagonalUp:{Side:xlDiagonalUp;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2}}}');
+INSERT INTO style ([stylename],[styledata]) 
+VALUES ('testcase','{name:testcase;IncludeAlignment:True;Alignment:{AddIndent:False;HorizontalAlignment:-4131;VerticalAlignment:-4160;WrapText:False;Orientation:-4128;IndentLevel:0;ReadingOrder:-5002;ShrinkToFit:False};IncludeFont:True;Font:{Background:;Bold:True;Color:0;ColorIndex:-4105;Italic:False;Name:Arial;Size:10;OutlineFont:False;Shadow:False;Strikethrough:False;Subscript:False;Superscript:False;Underline:-4142};IncludePatterns:True;Interior:{Color:65535;ColorIndex:6;Pattern:1;PatternColor:0;PatternColorIndex:-4105};IncludeNumber:False;Number:{NumberFormat:General};IncludeProtection:True;Protection:{FormulaHidden:False;Locked:True};IncludeBorder:True;Borders:{dummy:1;xlEdgeLeft:{Side:xlEdgeLeft;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeRight:{Side:xlEdgeRight;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeTop:{Side:xlEdgeTop;Color:0;ColorIndex:-4105;LineStyle:1;Weight:2};xlEdgeBottom:{Side:xlEdgeBottom;Color:0;ColorIndex:-4105;LineStyle:1;Weight:2};xlDiagonalDown:{Side:xlDiagonalDown;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlDiagonalUp:{Side:xlDiagonalUp;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2}}}');
+INSERT INTO style ([stylename],[styledata])		
+VALUES ('testcondition','{name:testcondition;IncludeAlignment:True;Alignment:{AddIndent:False;HorizontalAlignment:-4131;VerticalAlignment:-4160;WrapText:False;Orientation:-4128;IndentLevel:0;ReadingOrder:-5002;ShrinkToFit:False};IncludeFont:True;Font:{Background:;Bold:True;Color:0;ColorIndex:1;Italic:False;Name:Arial;Size:10;OutlineFont:False;Shadow:False;Strikethrough:False;Subscript:False;Superscript:False;Underline:-4142};IncludePatterns:True;Interior:{Color:52479;ColorIndex:44;Pattern:1;PatternColor:0;PatternColorIndex:-4105};IncludeNumber:False;Number:{NumberFormat:General};IncludeProtection:True;Protection:{FormulaHidden:False;Locked:True};IncludeBorder:True;Borders:{dummy:1;xlEdgeLeft:{Side:xlEdgeLeft;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeRight:{Side:xlEdgeRight;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeTop:{Side:xlEdgeTop;Color:0;ColorIndex:-4105;LineStyle:1;Weight:2};xlEdgeBottom:{Side:xlEdgeBottom;Color:0;ColorIndex:-4105;LineStyle:1;Weight:2};xlDiagonalDown:{Side:xlDiagonalDown;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlDiagonalUp:{Side:xlDiagonalUp;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2}}}');
+INSERT INTO style ([stylename],[styledata]) 
+VALUES ('testdata','{name:testdata;IncludeAlignment:True;Alignment:{AddIndent:False;HorizontalAlignment:-4131;VerticalAlignment:-4160;WrapText:False;Orientation:-4128;IndentLevel:0;ReadingOrder:-5002;ShrinkToFit:False};IncludeFont:True;Font:{Background:;Bold:True;Color:0;ColorIndex:1;Italic:False;Name:Arial;Size:10;OutlineFont:False;Shadow:False;Strikethrough:False;Subscript:False;Superscript:False;Underline:-4142};IncludePatterns:True;Interior:{Color:16777215;ColorIndex:-4142;Pattern:-4142;PatternColor:0;PatternColorIndex:-4142};IncludeNumber:False;Number:{NumberFormat:General};IncludeProtection:True;Protection:{FormulaHidden:False;Locked:True};IncludeBorder:True;Borders:{dummy:1;xlEdgeLeft:{Side:xlEdgeLeft;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeRight:{Side:xlEdgeRight;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeTop:{Side:xlEdgeTop;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlEdgeBottom:{Side:xlEdgeBottom;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlDiagonalDown:{Side:xlDiagonalDown;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2};xlDiagonalUp:{Side:xlDiagonalUp;Color:0;ColorIndex:-4142;LineStyle:-4142;Weight:2}}}');
+
+-- ---------------------------------------------------------------------------------
+-- End of file
+-- ---------------------------------------------------------------------------------
