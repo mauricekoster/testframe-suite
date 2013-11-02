@@ -42,20 +42,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExcelApi">
-      <HintPath>..\Libraries\NetOffice\ExcelApi.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\packages\NetOffice.Excel.Net40.1.6.0.0\lib\net40\ExcelApi.dll</HintPath>
     </Reference>
     <Reference Include="ExcelDna.Integration">
       <HintPath>..\packages\Excel-DNA.0.30.3\lib\ExcelDna.Integration.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="NetOffice">
-      <HintPath>..\Libraries\NetOffice\NetOffice.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\packages\NetOffice.Core.Net40.1.6.0.0\lib\net40\NetOffice.dll</HintPath>
     </Reference>
     <Reference Include="OfficeApi">
-      <HintPath>..\Libraries\NetOffice\OfficeApi.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\packages\NetOffice.Core.Net40.1.6.0.0\lib\net40\OfficeApi.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -70,8 +67,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="VBIDEApi">
-      <HintPath>..\Libraries\NetOffice\VBIDEApi.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\packages\NetOffice.Core.Net40.1.6.0.0\lib\net40\VBIDEApi.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -99,6 +95,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ExcelDna-Template.dna">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -184,7 +183,9 @@ echo B | xcopy "$(SolutionDir)packages\Excel-DNA.0.30.3\tools\ExcelDna64.xll" "$
 echo B | xcopy "$(ProjectDir)TestFrameSuite.dna" "$(TargetDir)TestFrameSuite.dna" /C /Y
 echo B | xcopy "$(ProjectDir)TestFrameSuite.dna" "$(TargetDir)TestFrameSuite.x64.dna" /C /Y
 "$(SolutionDir)packages\Excel-DNA.0.30.3\tools\ExcelDnaPack.exe" "$(TargetDir)TestFrameSuite.dna" /Y
-"$(SolutionDir)packages\Excel-DNA.0.30.3\tools\ExcelDnaPack.exe" "$(TargetDir)TestFrameSuite.x64.dna" /Y</PostBuildEvent>
+"$(SolutionDir)packages\Excel-DNA.0.30.3\tools\ExcelDnaPack.exe" "$(TargetDir)TestFrameSuite.x64.dna" /Y
+echo F | xcopy "E:\GitHubProjecten\testframe-suite\packages\Excel-DNA.0.30.3\tools\ExcelDna.xll" "$(TargetDir)TestFrameSuiteView-AddIn.xll" /C /Y
+"E:\GitHubProjecten\testframe-suite\packages\Excel-DNA.0.30.3\tools\ExcelDnaPack.exe" "$(TargetDir)TestFrameSuiteView-AddIn.dna" /Y</PostBuildEvent>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
